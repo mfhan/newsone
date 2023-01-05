@@ -28,13 +28,11 @@ function Main(props) {
     //       '&sortBy=popularity&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6'
 
     const [resultNewsList, setNewsList] = useState([])
-
     const [resultWorldList, setWorldList] = useState([])    
-
     const [translatedList, setTranslatedList] = useState([])
-   
+    const languageChoice = ['de', 'es', 'fr', 'he', 'it', 'nl', 'no', 'pt', 'ru']
+    const [selectedLanguage, setLanguage] = useState('')
 
- 
 const makeUSNewsCall = async() => {
     const queryString = 'https://newsapi.org/v2/everything?q=' +
           searchWord +
@@ -76,6 +74,8 @@ const makeWorldCall = async() => {
           searchWord +
           '&domains=' +
           IntlSources +
+          '&language=' +
+          selectedLanguage +
           '&sortBy=popularity&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6'
 
         axios.get(queryString)
@@ -184,9 +184,10 @@ console.log("textStr:", textStr)
       <div>
       <div className="searchWord">
         <h2>Search the news</h2>
-          <SearchInput
+          <SearchInput 
             searchWord = {searchWord}
             setSearchWord = {setSearchWord}
+            setLanguage = {setLanguage}
             setSubmitCompleted = {setSubmitCompleted}
            />
       </div>

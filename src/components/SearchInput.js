@@ -10,7 +10,7 @@ import {
 //2. be able to take the input - handleChange
 //3. handleSubmit 
 
-function SearchInput({searchWord, setSearchWord, setSubmitCompleted}){
+function SearchInput({searchWord, setSearchWord, setLanguage, setSubmitCompleted}){
 
 const handleNewsInputChange = (event) => {
 	setSearchWord(event.target.value);
@@ -20,6 +20,17 @@ const handleNewsInputChange = (event) => {
 //then we take the current value of the search word 
 
 //const navigate = useNavigate()
+
+  const languageChoice = ['', 'de', 'es', 'fr', 'he', 'it', 'nl', 'no', 'pt', 'ru']
+    const languageOptions = languageChoice.map((lang, i) => {
+      return (
+        <option key={lang} value = { lang }> {lang} </option>
+      )})
+
+  const handleLang = (event) =>{
+    event.preventDefault();
+    setLanguage(event.target.value); 
+  }
 
 const handleSubmit = (event) => {
   event.preventDefault();
@@ -37,6 +48,11 @@ const handleSubmit = (event) => {
         onChange={handleNewsInputChange}
         value={searchWord}
     />
+
+   <select onChange = {handleLang}> 
+     {languageOptions}
+    </select>   
+
 <input id="button" type="submit" value="Any search word!" />
 </form>
     )
