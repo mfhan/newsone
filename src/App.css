@@ -98,6 +98,13 @@ input[type=text] {
   border: 1px solid black;
   border-radius: 4px;
   font-size: 16px;
+  margin: 5px;
+  /* border: 2px 2px 2px 2px; */
+}
+
+select {
+  margin: 5px;
+
 }
 
 #button {
@@ -105,6 +112,7 @@ input[type=text] {
   color: white;
   background-color: black;
   padding: 2px 2px 2px 2px;
+  margin: 5px;
   /* background-color: rgba(253, 251, 251, 0.5); */
 }
 

@@ -1,0 +1,8 @@
+{
+    "editor.tabSize": 2,
+    "editor.tabCompletion": "on",
+    "editor.stickyTabStops": true,
+    "editor.indentSize": "tabSize",
+    "workbench.editor.wrapTabs": false,
+    "workbench.editor.tabSizing": "shrink"
+}
