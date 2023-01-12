@@ -2,11 +2,13 @@ import React from 'react';
 import '../App.css';
 import axios from 'axios';
 import badSources from '../services/badsources';
+import badIntlSources from '../services/badintlsources';
+import SearchInput from './SearchInput';
 
 export async function makeUSNewsCall(usQueryString, setNewsList) {
   axios.get(usQueryString)
     .then((response) => {
-      // console.log('this is the response', response)
+      console.log('this is the US response', response)
       const resultList = response.data.articles
         .filter((element) => !badSources.includes(element.name))
         .map((d, i) => {
@@ -31,12 +33,43 @@ export async function makeUSNewsCall(usQueryString, setNewsList) {
     });
 };
 
+//const [resultWorldList, setWorldList] = useState([]);
+//const [translatedList, setTranslatedList] = useState([]);
 
+export async function makeWorldCall(worldQueryString, setWorldList, setTranslatedList) {
+  axios.get(worldQueryString)
+    .then((response) => {
+      console.log('this is the World response', response)
+      const resultWorldList = response.data.articles
+        .filter((element) => !badIntlSources.includes(element.name))
+        .map((d, i) => {
+          const searchItem = {
+            title: d.title,
+            url: d.url,
+            image: d.urlToImage,
+            summary: d.description,
+            id: d.source.id,
+            name: d.source.name,
+            icon: 'http://www.geonames.org/flags/x/us.gif',
+          };
+          console.log('intl sourcename: ', searchItem.name);
+          console.log('intl summary: ', searchItem.title);
+          return searchItem;
+        });
 
-const translateText = async (results) => {
+      setWorldList(resultWorldList);
+      //the list that was created via filter and map goes back to MAIN via the setter 
+      translateText(resultWorldList, setTranslatedList);
+      //takes TWO params in order to SET the translated list
+      //which MUST be passed due to SCOPE 
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
+export async function translateText(results, setTranslatedList) {
   const titles = results.map((item) => item.title);
-  console.log('titles:', titles);
-
   let textStr = '';
   for (const title of titles) {
     textStr += `text=${title}&`;
@@ -53,7 +86,18 @@ const translateText = async (results) => {
 
   setTranslatedList(
     // set it as response.data.translation, just an array
-    response.data.translations
+    //response.data.translations
     // mapping will happen later in NewsList
+
+    response.data.translations.map((d, i) => (
+      <li className="news-item" key={i}>
+        {d.text}
+        {' '}
+        {d.detected_source_language}
+        <br />
+      </li>
+    )),
   );
 };
+
+

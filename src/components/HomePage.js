@@ -1,6 +1,6 @@
 import React from "react";
 import NewsList from "./NewsList.js";
-import Form from "./Form";
+import SearchInput from "./SearchInput";
 import "../App.css";
 
 class Home extends React.Component {
