@@ -25,6 +25,7 @@ function Main(props) {
   const [resultWorldList, setWorldList] = useState([])
   const [translatedList, setTranslatedList] = useState([])
   const [selectedLanguage, setLanguage] = useState('')
+  const [newsClass, setNewsClass] = useState("");
 
   const usQueryString = `https://newsapi.org/v2/everything?q=${searchWord
     }&domains=${usSources
@@ -36,19 +37,25 @@ function Main(props) {
     }&sortBy=popularity&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6`;
 
   useEffect(() => {
+    console.log('submitCompleted:', submitCompleted)
     if (submitCompleted) {
       console.log('this is USCall')
-      debugger;
       makeUSNewsCall(usQueryString, setNewsList);
       console.log('this is WorldCall')
-      makeWorldCall(worldQueryString, setWorldList, setTranslatedList);
-      //MUST pass these arguments even though they were expressed in Utils
+      makeWorldCall(worldQueryString, setWorldList, setTranslatedList, setSubmitCompleted);
+      //MUST pass these arguments even though they were ALREADY expressed in Utils
+      setNewsClass("news-list");
     }
   }, [submitCompleted])
 
-  const setClass = submitCompleted
-    ? "news-list"
-    : "";
+  // const setClass = submitCompleted
+  //   ? "news-list"
+  //   : "";
+  // setClass was dependent on submitCompleted, but in order for it to not be affected by the submitCompleted = false that happens at the end of the World Call, we need to declare it using useState and tying it to useEffect 
+  //useState 
+  //  const [newsClass, setNewsClass] = useState("");
+  //then call it in the useEffect 
+  //then use newsClass in the return
 
   return (
     <div>
@@ -75,15 +82,15 @@ function Main(props) {
 
       <div className="container">
         <NewsList
-          addClass={`us-${setClass}`}
+          addClass={`us-${newsClass}`}
           newsList={resultNewsList}
         />
         <NewsList
-          addClass={`world-${setClass}`}
+          addClass={`world-${newsClass}`}
           newsList={resultWorldList}
         />
         <NewsList
-          addClass={`translated-${setClass}`}
+          addClass={`translated-${newsClass}`}
           newsList={translatedList}
         />
       </div>

@@ -8,7 +8,7 @@ import SearchInput from './SearchInput';
 export async function makeUSNewsCall(usQueryString, setNewsList) {
   axios.get(usQueryString)
     .then((response) => {
-      console.log('this is the US response', response)
+      //console.log('this is the US response', response)
       const resultList = response.data.articles
         .filter((element) => !badSources.includes(element.name))
         .map((d, i) => {
@@ -36,10 +36,10 @@ export async function makeUSNewsCall(usQueryString, setNewsList) {
 //const [resultWorldList, setWorldList] = useState([]);
 //const [translatedList, setTranslatedList] = useState([]);
 
-export async function makeWorldCall(worldQueryString, setWorldList, setTranslatedList) {
+export async function makeWorldCall(worldQueryString, setWorldList, setTranslatedList, setSubmitCompleted) {
   axios.get(worldQueryString)
     .then((response) => {
-      console.log('this is the World response', response)
+      //console.log('this is the World response', response)
       const resultWorldList = response.data.articles
         .filter((element) => !badIntlSources.includes(element.name))
         .map((d, i) => {
@@ -59,7 +59,7 @@ export async function makeWorldCall(worldQueryString, setWorldList, setTranslate
 
       setWorldList(resultWorldList);
       //the list that was created via filter and map goes back to MAIN via the setter 
-      translateText(resultWorldList, setTranslatedList);
+      translateText(resultWorldList, setTranslatedList, setSubmitCompleted);
       //takes TWO params in order to SET the translated list
       //which MUST be passed due to SCOPE 
     })
@@ -68,7 +68,7 @@ export async function makeWorldCall(worldQueryString, setWorldList, setTranslate
     });
 };
 
-export async function translateText(results, setTranslatedList) {
+export async function translateText(results, setTranslatedList, setSubmitCompleted) {
   const titles = results.map((item) => item.title);
   let textStr = '';
   for (const title of titles) {
@@ -85,6 +85,5 @@ export async function translateText(results, setTranslatedList) {
   console.log('response.data from translateText:', response.data);
   //setTranslatedList is now simplified to response.data.translations b/c the mapping happens via NewsList
   setTranslatedList(response.data.translations);
+  setSubmitCompleted(false);
 };
-
-
