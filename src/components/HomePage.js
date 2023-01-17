@@ -5,25 +5,19 @@ import "../App.css";
 
 class Home extends React.Component {
   render() {
-    const isButtonClicked = this.props.isButtonClicked
-      ? "news-list"
-      : "news-list-pre";
     return (
       <>
         <div className="intro">
           <h1 className="title">
-            {" "}
-            NEWSWINDOW <br /> How Countries See The News{" "}
-          </h1>{" "}
+            NEWSWINDOW <br /> How Countries See The News
+          </h1>
           <div className="invitation">
-            {" "}
             <span>
-              {" "}
-              Countries around the world see and frame the news differently.{" "}
-              <br /> Type a search word to compare angles and points of view.{" "}
+              Countries around the world see and frame the news differently.
+              <br /> Type a search word to compare angles and points of view.
             </span>
           </div>
-          <Form
+          {/* <Form
             keyChange={this.props.keyChange}
             searchInput={this.props.searchInput}
             value={this.props.value}
@@ -42,11 +36,11 @@ class Home extends React.Component {
           <NewsList
             addClass={`world-${isButtonClicked}`}
             newsList={this.props.worldResultList}
-          />{" "}
-        </div>
-      </>
-    );
+          />
+        </div> */}
+        </>
+        );
   }
 }
 
-export default Home;
+        export default Home;

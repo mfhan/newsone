@@ -51,12 +51,14 @@ function SearchInput({ searchWord, setSearchWord, setLanguage, setSubmitComplete
         onChange={handleNewsInputChange}
         value={searchWord}
       />
-
-      <select onChange={handleLang}>
+      <label for="language">Language:</label>
+      <select
+        name="language" id="language"
+        onChange={handleLang}>
         {languageOptions}
       </select>
 
-      <input id="button" type="submit" value="Any search word!" />
+      <input id="button" type="submit" value="Search!" />
     </form>
   )
 }

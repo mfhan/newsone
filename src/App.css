@@ -104,7 +104,7 @@ input[type=text] {
 
 select {
   margin: 5px;
-
+  font-size: 18px;
 }
 
 #button {
@@ -179,6 +179,10 @@ select {
   background-repeat: repeat;
 }
 
+.translated-news-list {
+  background-image: linear-gradient(120deg, rgba(253, 251, 251, 0.8) 0%, rgba(235, 237, 238, 0.8) 100%), url('./images/un_flag_original.png');
+  background-repeat: repeat;
+}
 
 .world-news-list img {
   display: inline-block;
