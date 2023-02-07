@@ -45,6 +45,7 @@ function Main(props) {
       makeWorldCall(worldQueryString, setWorldList, setTranslatedList, setSubmitCompleted);
       //MUST pass these arguments even though they were ALREADY expressed in Utils
       setNewsClass("news-list");
+      setSearchWord("");
     }
   }, [submitCompleted])
 
