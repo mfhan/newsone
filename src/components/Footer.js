@@ -6,7 +6,7 @@ function Footer(props) {
 
   return (
     <footer>
-      <li>&copy; 2019 Marie-France Han</li>
+      <li>&copy; 2023 Marie-France Han</li>
       <li ><Link to="/">Home</Link></li>
       <li ><Link to="/about">About This Project</Link></li>
     </footer>

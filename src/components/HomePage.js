@@ -1,6 +1,4 @@
 import React from "react";
-import NewsList from "./NewsList.js";
-import SearchInput from "./SearchInput";
 import "../App.css";
 
 class Home extends React.Component {
@@ -14,6 +12,7 @@ class Home extends React.Component {
           <span>
             Countries around the world see and frame the news differently.
             <br /> Type a search word to compare angles and points of view.
+            <br /> Powered by NewsCatcher API
           </span>
         </div>
         <Form
