@@ -27,25 +27,56 @@ function Main(props) {
   const [selectedLanguage, setLanguage] = useState('')
   const [newsClass, setNewsClass] = useState("");
 
-  const usQueryString = `https://newsapi.org/v2/everything?q=${searchWord
-    }&domains=${usSources
-    }&sortBy=publishedAt&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6`;
 
-  const worldQueryString = `https://newsapi.org/v2/everything?q=${searchWord
-    }&domains=${IntlSources
-    }&language=${selectedLanguage
-    }&sortBy=popularity&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6`;
+  // var options = {
+  //   method: 'GET',
+  //   url: 'https://api.newscatcherapi.com/v2/search',
+  //   params: {q: '${usQueryString}', lang: 'en', sort_by: 'relevancy', page: '1'},
+  //   headers: {
+  //     'x-api-key': 'VfdjeLsGpGAVNMtyoFH2oZy6n_Ofx0fSlPxFtcz2kVI'
+  //   }
+  // };
+
+
+  const usQueryObject = {
+    method: 'GET',
+    url: 'https://api.newscatcherapi.com/v2/search',
+    params: { q: `${searchWord}`, lang: 'en', sort_by: 'relevancy', page: '1', page_size: 5 },
+    headers: {
+      'x-api-key': 'VfdjeLsGpGAVNMtyoFH2oZy6n_Ofx0fSlPxFtcz2kVI'
+    }
+  }
+
+  const worldQueryObject = {
+    method: 'GET',
+    url: 'https://api.newscatcherapi.com/v2/search',
+    params: { q: `${searchWord}`, lang: `${selectedLanguage}`, sort_by: 'relevancy', page: '1', page_size: 5 },
+    headers: {
+      'x-api-key': 'VfdjeLsGpGAVNMtyoFH2oZy6n_Ofx0fSlPxFtcz2kVI'
+    }
+  }
+
+  // const usQueryString = `https://newsapi.org/v2/everything?q=${searchWord
+  //   }&domains=${usSources
+  //   }&sortBy=publishedAt&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6`;
+
+  // const worldQueryString = `https://newsapi.org/v2/everything?q=${searchWord
+  //   }&domains=${IntlSources
+  //   }&language=${selectedLanguage
+  //   }&sortBy=popularity&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6`;
+
+
 
   useEffect(() => {
     console.log('submitCompleted:', submitCompleted)
     if (submitCompleted) {
-      console.log('this is USCall')
-      makeUSNewsCall(usQueryString, setNewsList);
-      console.log('this is WorldCall')
-      makeWorldCall(worldQueryString, setWorldList, setTranslatedList, setSubmitCompleted);
-      //MUST pass these arguments even though they were ALREADY expressed in Utils
+      // console.log('this is USCall')
+      makeUSNewsCall(usQueryObject, setNewsList);
+      // console.log('this is WorldCall')
+      setTimeout(() => { makeWorldCall(worldQueryObject, setWorldList, setTranslatedList, setSubmitCompleted); setSearchWord("") }, 1200)
+      // setSearchWord("");
+      // MUST pass these arguments even though they were ALREADY expressed in Utils
       setNewsClass("news-list");
-      setSearchWord("");
     }
   }, [submitCompleted])
 
