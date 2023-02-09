@@ -151,25 +151,6 @@ select {
   height: 10px;
 }
 
-.gb-news-list {
-  background-image: linear-gradient(120deg, rgba(253, 251, 251, 0.8) 0%, rgba(235, 237, 238, 0.8) 100%), url('./images/gb_flag.gif');
-  background-repeat: repeat;
-  filter: blur(50%);
-}
-
-.gb-news-list-pre {
-  background-image: linear-gradient(120deg, rgba(253, 251, 251, 0.2) 0%, rgba(235, 237, 238, 0.2) 100%), url('./images/gb_flag.gif');
-  background-repeat: repeat;
-  filter: blur(50%);
-}
-
-
-.gb-news-list img {
-  display: inline-block;
-  width: 12px;
-  height: 10px;
-}
-
 .world-news-list {
   background-image: linear-gradient(120deg, rgba(253, 251, 251, 0.8) 0%, rgba(235, 237, 238, 0.8) 100%), url('./images/WorldFlags.png');
   background-repeat: repeat;
@@ -182,6 +163,11 @@ select {
 
 .translated-news-list {
   background-image: linear-gradient(120deg, rgba(253, 251, 251, 0.8) 0%, rgba(235, 237, 238, 0.8) 100%), url('./images/un_flag_original.png');
+  background-repeat: repeat;
+}
+
+.translated-news-list-pre {
+  background-image: linear-gradient(120deg, rgba(253, 251, 251, 0.2) 0%, rgba(235, 237, 238, 0.8) 100%), url('./images/un_flag_original.png');
   background-repeat: repeat;
 }
 

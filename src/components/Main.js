@@ -25,8 +25,9 @@ function Main(props) {
   const [resultWorldList, setWorldList] = useState([])
   const [translatedList, setTranslatedList] = useState([])
   const [selectedLanguage, setLanguage] = useState('')
-  const [newsClass, setNewsClass] = useState("");
+  const [newsClass, setNewsClass] = useState('news-list-pre');
 
+  //addClass={`world-${newsClass}`}
 
   // var options = {
   //   method: 'GET',
