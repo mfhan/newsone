@@ -1,74 +1,20 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# NewsWindow: How the world frames the news
 
+## WHAT IS IT? 
+##NewsWindow is an app that allows readers to compare how events are reported in the US and the rest of the world — with headlines automatically translated into English. 
+###The user is invited to type a search term, which will make two separate API calls to NewsCatcher API (https://docs.newscatcherapi.com/) and return three windows offering the top results in English and the selected language. 
+THE TWIST: the "Rest-of-the-world" headlines are both in the selected language AND instantly translated into English -- because the app uses a second API that AUTOMATICALLY TRANSLATES the non-English headlines.
+
+## EXAMPLE: 
+###I want to know the difference in coverage of the Covid pandemic in English and other languages. I type "Covid", then select the language (nine currently, more to come). 
+The first API call generates two columns: a column of news results in English, and a column of news headlines in the selected language. 
+ANOTHER API call allows the articles in the "other language" column to be translated, populating the third column. 
+
+## API info:
+-- NEWS: I used NewsCatcher, "a data-as-a-service startup" that aims to "build the largest database of structured news articles published online" 
+-- TRANSLATION: After many tribulations dealing with expensive services, I selected Deepl (https://www.deepl.com/translator)
+
+##TRY IT OUT: https://newswindow.netlify.app/
+
+### 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# newsone
->>>>>>> f48982ba17d4ccb3451baf3750ba823a381a4db4
