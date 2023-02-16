@@ -11,7 +11,6 @@ import {
 //3. handleSubmit 
 //4. create handleLang function, connect it to 
 
-
 function SearchInput({ searchWord, setSearchWord, setLanguage, setSubmitCompleted }) {
 
   const handleNewsInputChange = (event) => {
@@ -23,7 +22,7 @@ function SearchInput({ searchWord, setSearchWord, setLanguage, setSubmitComplete
 
   //const navigate = useNavigate()
 
-  const languageChoice = ['', 'de', 'es', 'fr', 'he', 'it', 'nl', 'no', 'pt', 'ru']
+  const languageChoice = ['', 'ar', 'cn', 'de', 'en', 'es', 'fr', 'he', 'it', 'ja', 'ko', 'nl', 'no', 'pt', 'ru']
   const languageOptions = languageChoice.map((lang, i) => {
     return (
       <option key={lang} value={lang}> {lang} </option>

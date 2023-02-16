@@ -42,7 +42,7 @@ function Main(props) {
   const usQueryObject = {
     method: 'GET',
     url: 'https://api.newscatcherapi.com/v2/search',
-    params: { q: `${searchWord}`, lang: 'en', sort_by: 'relevancy', page: '1', page_size: 5 },
+    params: { q: `${searchWord}`, lang: 'en', countries: "US", sort_by: 'relevancy', page: '1', page_size: 8 },
     headers: {
       'x-api-key': 'VfdjeLsGpGAVNMtyoFH2oZy6n_Ofx0fSlPxFtcz2kVI'
     }
@@ -51,7 +51,7 @@ function Main(props) {
   const worldQueryObject = {
     method: 'GET',
     url: 'https://api.newscatcherapi.com/v2/search',
-    params: { q: `${searchWord}`, lang: `${selectedLanguage}`, sort_by: 'relevancy', page: '1', page_size: 5 },
+    params: { q: `${searchWord}`, lang: `${selectedLanguage}`, not_countries: 'US', sort_by: 'relevancy', page: '1', page_size: 8 },
     headers: {
       'x-api-key': 'VfdjeLsGpGAVNMtyoFH2oZy6n_Ofx0fSlPxFtcz2kVI'
     }

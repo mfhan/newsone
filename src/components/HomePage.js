@@ -6,13 +6,12 @@ class Home extends React.Component {
     return (
       <div className="intro">
         <h1 className="title">
-          NEWSWINDOW <br /> How Countries See The News
+          NEWSWINDOW <br /> How Different Countries See The News
         </h1>
         <div className="invitation">
           <span>
             Countries around the world see and frame the news differently.
             <br /> Type a search word to compare angles and points of view.
-            <br /> Powered by NewsCatcher API
           </span>
         </div>
         <Form
