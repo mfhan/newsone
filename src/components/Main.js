@@ -11,11 +11,11 @@ import IntlSources from '../services/intlsources';
 import badIntlSources from '../services/badintlsources';
 import usSources from '../services/ussources';
 import badSources from '../services/badsources';
-import { makeUSNewsCall, makeWorldCall } from './Utils';
+import { makeUSNewsCall, makeWorldCall, translateText } from './Utils';
 import NewsList from './NewsList';
 
 function Main(props) {
-  console.log("props from Main: ", props)
+  //console.log("props from Main: ", props)
   //let searchWord = props.searchWord 
 
   //useState returns an array composed of the search word and the function that will manipulate it 
@@ -42,30 +42,21 @@ function Main(props) {
   const usQueryObject = {
     method: 'GET',
     url: 'https://api.newscatcherapi.com/v2/search',
-    params: { q: `${searchWord}`, lang: 'en', countries: "US", sort_by: 'relevancy', page: '1', page_size: 8 },
+    params: { q: `${searchWord}`, lang: 'en', countries: "US", sort_by: 'relevancy', page: '1', page_size: 5 },
     headers: {
       'x-api-key': 'VfdjeLsGpGAVNMtyoFH2oZy6n_Ofx0fSlPxFtcz2kVI'
     }
   }
 
+  console.log("selectedLanguage: ", selectedLanguage)
   const worldQueryObject = {
     method: 'GET',
     url: 'https://api.newscatcherapi.com/v2/search',
-    params: { q: `${searchWord}`, lang: `${selectedLanguage}`, not_countries: 'US', sort_by: 'relevancy', page: '1', page_size: 8 },
+    params: { q: `${searchWord}`, lang: `${selectedLanguage}`, not_countries: 'US', sort_by: 'relevancy', page: '1', page_size: 5 },
     headers: {
       'x-api-key': 'VfdjeLsGpGAVNMtyoFH2oZy6n_Ofx0fSlPxFtcz2kVI'
     }
   }
-
-  // const usQueryString = `https://newsapi.org/v2/everything?q=${searchWord
-  //   }&domains=${usSources
-  //   }&sortBy=publishedAt&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6`;
-
-  // const worldQueryString = `https://newsapi.org/v2/everything?q=${searchWord
-  //   }&domains=${IntlSources
-  //   }&language=${selectedLanguage
-  //   }&sortBy=popularity&pageSize=3&apiKey=ded05226f8e9489888443d1b682e93c6`;
-
 
 
   useEffect(() => {
@@ -74,12 +65,37 @@ function Main(props) {
       // console.log('this is USCall')
       makeUSNewsCall(usQueryObject, setNewsList);
       // console.log('this is WorldCall')
-      setTimeout(() => { makeWorldCall(worldQueryObject, setWorldList, setTranslatedList, setSubmitCompleted); setSearchWord("") }, 1200)
-      // setSearchWord("");
+      setTimeout(() => {
+        makeWorldCall(worldQueryObject, setWorldList)
+      }, 2000);
+      //translateText(resultWorldList, setTranslatedList, setSubmitCompleted)
+      setSearchWord("");
       // MUST pass these arguments even though they were ALREADY expressed in Utils
       setNewsClass("news-list");
     }
   }, [submitCompleted])
+
+  useEffect(() => {
+    if (resultWorldList.length > 0) {
+      translateText(resultWorldList, setTranslatedList, setSubmitCompleted);
+    }
+  }, [resultWorldList])
+
+
+
+  //original: 
+  // useEffect(() => {
+  //   console.log('submitCompleted:', submitCompleted)
+  //   if (submitCompleted) {
+  //     // console.log('this is USCall')
+  //     makeUSNewsCall(usQueryObject, setNewsList);
+  //     // console.log('this is WorldCall')
+  //     setTimeout(() => { makeWorldCall(worldQueryObject, setWorldList, setTranslatedList, setSubmitCompleted); setSearchWord("") }, 1200)
+  //     // setSearchWord("");
+  //     // MUST pass these arguments even though they were ALREADY expressed in Utils
+  //     setNewsClass("news-list");
+  //   }
+  // }, [submitCompleted])
 
   // const setClass = submitCompleted
   //   ? "news-list"
